@@ -7,7 +7,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'https://newtripsbackend.onrender.com',
+        target: 'https://newtripsbackend-1.onrender.com',
         changeOrigin: true,
       },
     },
