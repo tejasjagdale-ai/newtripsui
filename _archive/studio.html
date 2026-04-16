@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#89f5e7",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a44100",
+                        "on-secondary-fixed": "#00201d",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-tertiary-container": "#ffd2be",
+                        "inverse-primary": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#86f2e4",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "outline": "#777587",
+                        "on-primary-fixed": "#0f0069",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#4f46e5",
+                        "on-surface-variant": "#464555",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "secondary": "#006a61",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary": "#7e3000",
+                        "on-secondary-container": "#006f66",
+                        "primary": "#3525cd",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary">
+    <nav
+        class="bg-[#f7f9fb] dark:bg-slate-950 flex justify-between items-center w-full px-8 h-16 max-w-full fixed top-0 z-50">
+        <div class="flex items-center gap-8">
+            <span class="text-xl font-bold tracking-tight text-[#191c1e] dark:text-slate-100">The Sonic Editorial</span>
+            <div class="hidden md:flex items-center gap-6">
+                <a class="text-[#3525cd] dark:text-[#4f46e5] font-bold border-b-2 border-[#3525cd] pb-1 hover:text-[#3525cd] dark:hover:text-[#4f46e5] transition-colors duration-200"
+                    href="#">Studio</a>
+                <a class="text-[#191c1e]/60 dark:text-slate-400 font-medium hover:text-[#3525cd] dark:hover:text-[#4f46e5] transition-colors duration-200"
+                    href="#">History</a>
+                <a class="text-[#191c1e]/60 dark:text-slate-400 font-medium hover:text-[#3525cd] dark:hover:text-[#4f46e5] transition-colors duration-200"
+                    href="#">Voices</a>
+                <a class="text-[#191c1e]/60 dark:text-slate-400 font-medium hover:text-[#3525cd] dark:hover:text-[#4f46e5] transition-colors duration-200"
+                    href="#">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button
+                class="px-5 py-2 rounded-full bg-primary-container text-on-primary-container font-semibold text-sm hover:scale-[0.98] transition-all">Upgrade</button>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer">account_circle</span>
+        </div>
+    </nav>
+    <aside class="bg-[#f2f4f6] dark:bg-slate-900 fixed left-0 top-16 h-[calc(100vh-64px)] flex flex-col py-6 w-64 z-40">
+        <div class="px-6 mb-8">
+            <h2 class="text-lg font-black text-[#191c1e] dark:text-slate-100">Editorial Studio</h2>
+            <p class="text-xs text-on-surface-variant/70 uppercase tracking-widest font-bold">V3.2 Precision Engine</p>
+        </div>
+        <div class="flex-1 space-y-1">
+            <div
+                class="bg-[#ffffff] dark:bg-slate-800 text-[#3525cd] dark:text-[#4f46e5] rounded-l-full ml-4 pl-4 py-3 shadow-sm flex items-center gap-3">
+                <span class="material-symbols-outlined">folder_open</span>
+                <span class="font-medium">Projects</span>
+            </div>
+            <div
+                class="text-[#191c1e]/70 dark:text-slate-400 pl-8 py-3 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800/50 transition-all flex items-center gap-3 cursor-pointer">
+                <span class="material-symbols-outlined">description</span>
+                <span>Assets</span>
+            </div>
+            <div
+                class="text-[#191c1e]/70 dark:text-slate-400 pl-8 py-3 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800/50 transition-all flex items-center gap-3 cursor-pointer">
+                <span class="material-symbols-outlined">graphic_eq</span>
+                <span>Voice Lab</span>
+            </div>
+            <div
+                class="text-[#191c1e]/70 dark:text-slate-400 pl-8 py-3 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800/50 transition-all flex items-center gap-3 cursor-pointer">
+                <span class="material-symbols-outlined">code</span>
+                <span>API</span>
+            </div>
+        </div>
+        <div class="px-6 pt-6 mt-auto border-t border-outline-variant/10">
+            <div
+                class="text-[#191c1e]/70 dark:text-slate-400 py-3 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800/50 transition-all flex items-center gap-3 cursor-pointer mb-4">
+                <span class="material-symbols-outlined">help_outline</span>
+                <span>Help &amp; Support</span>
+            </div>
+            <button
+                class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:scale-[0.98] transition-all">
+                <span class="material-symbols-outlined">add</span>
+                New Production
+            </button>
+        </div>
+    </aside>
+    <main class="ml-64 mt-16 p-8 min-h-[calc(100vh-64px)] flex gap-8">
+        <section class="flex-1 flex flex-col gap-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-on-surface tracking-tight">Summer Launch Script</h1>
+                    <p class="text-on-surface-variant font-medium">Last edited 2 minutes ago • 452 words</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">history</span>
+                    </button>
+                    <button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">share</span>
+                    </button>
+                </div>
+            </div>
+            <div
+                class="flex-1 bg-surface-container-lowest rounded-[24px] p-10 shadow-sm relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed/20 blur-[60px] rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700">
+                </div>
+                <div class="prose prose-slate max-w-none relative z-10">
+                    <textarea
+                        class="w-full h-[600px] bg-transparent border-none focus:ring-0 text-xl leading-relaxed text-on-surface font-body resize-none no-scrollbar"
+                        placeholder="Start typing your editorial piece here...">In the heart of the digital landscape, sound is the soul of engagement. As we unveil our latest collection, we invite you to experience a new era of sonic clarity. 
+
+Imagine a voice that captures the crisp morning air of a mountain peak, or the warm, honeyed resonance of an evening in Tuscany. Our Summer Launch is not just about words; it is about the texture of thought.
+
+We have refined every syllable to ensure your message resonates with the human touch, bridging the gap between artificial precision and organic warmth. This is the art of the Sonic Editorial.</textarea>
+                </div>
+            </div>
+        </section>
+        <section class="w-[380px] flex flex-col gap-6">
+            <div class="bg-surface-container-low rounded-3xl p-6 flex flex-col gap-6 h-full">
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant/60 mb-4">Voice
+                        Categories</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button
+                            class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-semibold hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors">Professional</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-sm font-semibold">Playful</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-semibold hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors">Calm</button>
+                        <button
+                            class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface text-sm font-semibold hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors">Narrative</button>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto no-scrollbar flex flex-col gap-3">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant/60 mb-1">Model
+                        Selection</h3>
+                    <div
+                        class="p-4 rounded-2xl bg-surface-container-lowest border-2 border-primary/20 flex items-center gap-4 cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-primary-fixed overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                data-alt="close-up portrait of a charismatic man with a gentle smile and soft professional studio lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWMQX09vWS0opH5WLcrgt1WbEKbbdqrHb_dr5QPqbbm0wqt60y8rQQvagkOBb4uXD5pT4nhWQEe78RM17Jt9Rga2GdhjR397G-4xDowJijlfcrCE6agbAltsvtGrm-KH5hz7Vk-Z7b5mhrWjNqpejNrWmDvo6ZC4WQ9dy9ZOZjFNRdwJyKRzKlPS_c_mbJTHoUMtFhVevJX_9LWPbZbKgL79cVT7SxWMGFCHcDBnt2ICkJqrCc8IRrtFKjshzM3pNP5uTfXTKFJLE" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-on-surface truncate">Elias Thorne</p>
+                            <p class="text-xs text-on-surface-variant">Smooth, Deep Narrative</p>
+                        </div>
+                        <span class="material-symbols-outlined text-primary" data-weight="fill">check_circle</span>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors flex items-center gap-4 cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-secondary-fixed overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                data-alt="close-up portrait of a cheerful young woman with bright eyes and natural warm sunlight"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq57uu1EdHqRoi3QJQYsfcBFVe7ce9ZKEWuAaE6p2hv3jSDgsmzi0hsWZnXxej_RakMtIkKqmbNrrtY1Vd5f8unEiehcZ-FQhCZzBzQVgLHb8sdMAap-7_rnG6LNwDI-RHnTJSC1awYjm9LsqF28wPnfv7G0v3Jvw5pEawXk_O85q_oseAW48uMFKD_xCLdNGqbseTLvDpg8ABeBLOPEfvVGlthmGfY2pgKVuYb6zuf3Ax8ygXTd7NY8YfXCNGpdM-XkPuy4Zy6Jg" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-on-surface truncate">Clara Bloom</p>
+                            <p class="text-xs text-on-surface-variant">Bright, Energetic Ad-ready</p>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors flex items-center gap-4 cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-tertiary-fixed overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                data-alt="close-up of a distinguished older man with wise eyes and a professional demeanor in soft library lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzAisncwUzd60Wj9d_J9D-wi_ZBkuJSxXbQxOWSD4ONgEOWQ6xWlcY_3Xuxm_s3unEKAs2O3uqYq2zNRJ8cFugDtDJ9giZa1O01JYYMAAs0igzjr4RMqtZ6hTP9_bx3bhXp8SveubqeJKWem2vhlpaz6QH95Uo0cjGiv-R5okG1d4gg6-jKVaZ2dmdLVPQoy1WBBdnWeFWHNlyHtWzJgj02sX5mg1o5z_UR9sx0s7Mo9NZkhCtFRg-i-fKtPocADODKbjEvqQC6Xc" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-on-surface truncate">Arthur Vance</p>
+                            <p class="text-xs text-on-surface-variant">Authoritative, Documentary</p>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors flex items-center gap-4 cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-primary-fixed-dim overflow-hidden flex-shrink-0">
+                            <img class="w-full h-full object-cover"
+                                data-alt="close-up portrait of a serene woman with a peaceful expression and ethereal soft blue lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_KbaT0W16N6LWh_-SH0FWxX0G9ufaVU1k5J1kj4073toG-Erqbhxp3ykic5_Y4_IzvDkfA2YvdhflJj3ykOM2wfBKndrQsaV_9_tg01Ry7XBwF-CPMVPT5jveCOQ8vBF5l7kk8k2SPBOSzyLYehsk-0wo9rm3eVRS1mQxxX4G_8nx1jLBQrp7drRz-cLfKVIqf7FjiYRWdII7tNcdnkQoi8m6qp5nfhNYROswvzNLghg7F2iepEIETGAf2IFgn_2VyLHf8KBOSs0" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-on-surface truncate">Selene Moon</p>
+                            <p class="text-xs text-on-surface-variant">Whisper-quiet, ASMR Sleep</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-auto space-y-4">
+                    <div class="p-4 bg-surface-container-highest rounded-2xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-on-surface-variant">Current Audio</span>
+                            <span class="text-xs text-on-surface-variant">0:45 / 1:20</span>
+                        </div>
+                        <div class="h-8 flex items-center gap-1 mb-3">
+                            <div class="flex-1 bg-secondary-fixed h-1 rounded-full relative">
+                                <div class="absolute left-0 top-0 bottom-0 bg-secondary w-1/3 rounded-full"></div>
+                                <div
+                                    class="absolute left-1/3 top-1/2 -translate-y-1/2 w-3 h-3 bg-secondary rounded-full border-2 border-white shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-6">
+                            <span
+                                class="material-symbols-outlined text-on-surface-variant cursor-pointer">skip_previous</span>
+                            <div
+                                class="w-10 h-10 rounded-full bg-on-surface flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-on-surface-variant cursor-pointer">skip_next</span>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-2xl font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                        <span class="material-symbols-outlined">waves</span>
+                        Generate Speech
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

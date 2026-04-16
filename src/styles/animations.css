@@ -1,0 +1,229 @@
+/* =====================================================
+   ANIMATIONS — Keyframes & Motion System
+   ===================================================== */
+
+/* ── Page Transitions ── */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.995);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.995);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 400ms var(--ease-out) both;
+}
+
+.page-exit {
+  animation: pageExit 200ms ease-in both;
+}
+
+/* ── Staggered Card Entrance ── */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stagger-reveal {
+  opacity: 0;
+  animation: cardReveal 500ms var(--ease-out) both;
+}
+
+.stagger-reveal:nth-child(1) { animation-delay: 60ms; }
+.stagger-reveal:nth-child(2) { animation-delay: 120ms; }
+.stagger-reveal:nth-child(3) { animation-delay: 180ms; }
+.stagger-reveal:nth-child(4) { animation-delay: 240ms; }
+.stagger-reveal:nth-child(5) { animation-delay: 300ms; }
+.stagger-reveal:nth-child(6) { animation-delay: 360ms; }
+
+/* ── Fade In ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn var(--duration-normal) ease both;
+}
+
+/* ── Slide In Right (Toasts) ── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* ── Skeleton Shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-inset) 25%,
+    var(--bg-card-hover) 37%,
+    var(--bg-inset) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.spinner--dark {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-top-color: var(--primary);
+}
+
+/* ── Pulse ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Border Glow (Dropzone) ── */
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 2px var(--primary-ghost), 0 0 20px rgba(79, 70, 229, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 3px var(--primary), 0 0 30px rgba(79, 70, 229, 0.2);
+  }
+}
+
+/* ── Waveform Bars ── */
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.wave-bar {
+  display: inline-block;
+  width: 3px;
+  height: 24px;
+  margin: 0 1.5px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transform-origin: bottom;
+  animation: waveBar 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { animation-delay: 0.3s; }
+.wave-bar:nth-child(8) { animation-delay: 0.2s; }
+.wave-bar:nth-child(9) { animation-delay: 0.1s; }
+.wave-bar:nth-child(10) { animation-delay: 0s; }
+
+.wave-bar.paused {
+  animation-play-state: paused;
+}
+
+/* ── Counter Animation Helper ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Float/Hover Ambient ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Scale on Hover Glow ── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(79, 70, 229, 0); }
+}
+
+/* ── Glowing CTA Button ── */
+@keyframes glowBtn {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3), 0 0 0 0 rgba(79, 70, 229, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.5), 0 0 24px 4px rgba(79, 70, 229, 0.15);
+  }
+}
+
+.btn--glow {
+  animation: glowBtn 2.5s ease-in-out infinite;
+}
+
+.btn--glow:hover {
+  animation: none;
+  box-shadow: 0 6px 24px rgba(79, 70, 229, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ── Progress Bar Fill ── */
+@keyframes progressFill {
+  from { width: 0%; }
+}
+
+.animate-progress {
+  animation: progressFill 1s var(--ease-out) both;
+}

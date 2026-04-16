@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Sonic Editorial - Project Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c3c0ff",
+                        "background": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#86f2e4",
+                        "secondary": "#006a61",
+                        "on-primary-fixed": "#0f0069",
+                        "primary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#006f66",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "tertiary-container": "#a44100",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-surface-variant": "#464555",
+                        "secondary-fixed": "#89f5e7",
+                        "on-secondary-fixed": "#00201d",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#3525cd",
+                        "surface-tint": "#4d44e3",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "outline": "#777587",
+                        "primary-container": "#4f46e5",
+                        "tertiary": "#7e3000",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#dad7ff",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container": "#eceef0",
+                        "outline-variant": "#c7c4d8",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary-fixed-variant": "#3323cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface flex min-h-screen">
+    <!-- SideNavBar (Execution from JSON) -->
+    <aside
+        class="hidden md:flex flex-col p-4 space-y-2 h-screen w-64 bg-[#f2f4f6] font-['Inter'] text-sm font-medium sticky top-0">
+        <div class="px-4 py-6 mb-4">
+            <h1 class="text-lg font-black text-[#191c1e]">The Sonic Editorial</h1>
+            <p class="text-xs text-on-surface-variant/60">Digital Luthier</p>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 bg-white text-[#3525cd] rounded-lg shadow-sm transition-all ease-in-out duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Overview</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-[#191c1e]/60 hover:bg-white/50 rounded-lg transition-all ease-in-out duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="mic_external_on">mic_external_on</span>
+                <span>Studio</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-[#191c1e]/60 hover:bg-white/50 rounded-lg transition-all ease-in-out duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="tune">tune</span>
+                <span>Parameters</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-[#191c1e]/60 hover:bg-white/50 rounded-lg transition-all ease-in-out duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+                <span>Assets</span>
+            </a>
+        </nav>
+        <div class="pt-4 border-t border-outline-variant/20 space-y-1">
+            <button
+                class="w-full mb-4 bg-gradient-to-br from-[#3525cd] to-[#4f46e5] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                New Project
+            </button>
+            <a class="flex items-center gap-3 px-4 py-3 text-[#191c1e]/60 hover:bg-white/50 rounded-lg transition-all"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span>Settings</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-[#191c1e]/60 hover:bg-white/50 rounded-lg transition-all"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                <span>Help</span>
+            </a>
+        </div>
+    </aside>
+    <main class="flex-1 flex flex-col">
+        <!-- TopNavBar (Execution from JSON) -->
+        <header class="w-full top-0 sticky z-40 bg-[#f7f9fb] font-['Manrope'] tracking-tight border-none">
+            <div class="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
+                <div class="md:hidden text-xl font-bold text-[#191c1e]">The Sonic Editorial</div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-[#3525cd] font-bold border-b-2 border-[#3525cd] pb-1" href="#">Dashboard</a>
+                    <a class="text-[#191c1e]/70 hover:text-[#3525cd] transition-colors" href="#">Workspace</a>
+                    <a class="text-[#191c1e]/70 hover:text-[#3525cd] transition-colors" href="#">Tuning</a>
+                    <a class="text-[#191c1e]/70 hover:text-[#3525cd] transition-colors" href="#">Library</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="bg-[#3525cd] text-white px-5 py-2 rounded-full font-bold text-sm scale-98 active:scale-95 duration-200">
+                        Generate Speech
+                    </button>
+                    <span class="material-symbols-outlined text-[#191c1e]/70 cursor-pointer"
+                        data-icon="account_circle">account_circle</span>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content Area -->
+        <div class="px-8 py-10 w-full max-w-screen-2xl mx-auto space-y-12">
+            <!-- Hero Header Section -->
+            <section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-2">Welcome back,
+                        Luthier.</h2>
+                    <p class="text-on-surface-variant text-lg">Your sonic projects are ready for their next layer of
+                        craft.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="px-6 py-3 bg-surface-container-lowest text-on-surface-variant border border-outline-variant/20 rounded-xl font-semibold flex items-center gap-2 hover:bg-white transition-colors active:scale-95">
+                        <span class="material-symbols-outlined" data-icon="file_upload">file_upload</span>
+                        Import Script
+                    </button>
+                    <button
+                        class="px-6 py-3 bg-gradient-to-br from-[#3525cd] to-[#4f46e5] text-white rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                        <span class="material-symbols-outlined" data-icon="add">add</span>
+                        New Production
+                    </button>
+                </div>
+            </section>
+            <!-- Usage Statistics Bento Grid -->
+            <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div
+                    class="md:col-span-2 p-8 bg-white rounded-[2rem] border-none shadow-sm relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Usage
+                            Overview</span>
+                        <h3 class="text-5xl font-black text-on-surface mb-2">42.8k</h3>
+                        <p class="text-on-surface-variant font-medium">Characters processed this month</p>
+                        <div class="mt-8 h-2 bg-surface-container-low rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full" style="width: 65%;"></div>
+                        </div>
+                        <p class="mt-2 text-xs text-on-surface-variant/60 font-semibold">65% OF MONTHLY QUOTA</p>
+                    </div>
+                    <div
+                        class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                </div>
+                <div class="p-8 bg-surface-container-low rounded-[2rem] border-none flex flex-col justify-between">
+                    <div>
+                        <span class="material-symbols-outlined text-secondary text-4xl mb-4"
+                            data-icon="audio_file">audio_file</span>
+                        <h3 class="text-3xl font-bold text-on-surface">128</h3>
+                        <p class="text-on-surface-variant text-sm font-medium">Files Generated</p>
+                    </div>
+                    <div class="text-secondary text-xs font-bold flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                        +12% from last week
+                    </div>
+                </div>
+                <div class="p-8 bg-surface-container-low rounded-[2rem] border-none flex flex-col justify-between">
+                    <div>
+                        <span class="material-symbols-outlined text-tertiary text-4xl mb-4"
+                            data-icon="timer">timer</span>
+                        <h3 class="text-3xl font-bold text-on-surface">14.2h</h3>
+                        <p class="text-on-surface-variant text-sm font-medium">Audio Synthesized</p>
+                    </div>
+                    <div class="text-on-surface-variant/40 text-xs font-bold">TOTAL PLAYTIME</div>
+                </div>
+            </section>
+            <!-- Recent Projects Editorial Grid -->
+            <section class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold text-on-surface">Recent Productions</h3>
+                    <a class="text-primary font-bold text-sm hover:underline" href="#">View Library</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="flex flex-col gap-4 group cursor-pointer">
+                        <div class="aspect-video rounded-3xl overflow-hidden bg-surface-container-highest relative">
+                            <img alt="Ambient recording studio"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="professional recording studio with warm ambient lighting wooden acoustic panels and modern microphones in soft focus"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBchwQvLJowZMwEy2hi6K2FDkLRPv7jFuPjfZSGy4tgZXzYJIQo5A7aMnK4w3tDFT4zWfIlJoIOHA6rl2rIatJbEuAKfJgUDJaNSf13L0G3yeBbIvH9beyB2BGyrbZQ4VL3u6cHOZoiaVjsN_3A7ZuGVnD-Pli-nMJa0_F54_y2YcR6hXTVUhIWZJNclX3yvubyym8mOuWcusO_S1Rwc2mSS9sd1eQM3DtUVT4D_H7x33vp7iicyJ77_qaIIMH9uIx49MeYzCqS9mc" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-sm">
+                                <span class="material-symbols-outlined text-primary text-xl" data-icon="play_arrow"
+                                    data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-on-surface">Summer Campaign - V1</h4>
+                            <p class="text-on-surface-variant text-sm flex items-center gap-2">
+                                <span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                2 hours ago • Narrator: Julian
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="flex flex-col gap-4 group cursor-pointer">
+                        <div class="aspect-video rounded-3xl overflow-hidden bg-surface-container-highest relative">
+                            <img alt="Sound wave visualization"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="vibrant abstract 3d sound wave visualization in deep indigo and teal glowing against a dark background"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMEmHHtuRwmt2Og5Onl85ASg3fQNFA_qNv6YfZt5EDlG_jxB0jdhZTjUvMOsQY988_e4z9rLDNX9xHQr1ZWCs9dLwBahYQO6sW4gNgN8mVD04Pz2tCgv9qoLbBJFahWXtOZ_83ZIfNJdDwWeTlvIay49UIItS5zziyujJYaAC6APuksHn8wAbDJaJR_OhME5UUHEYe8C09hzlimZGhGuVZpPmADqudfLlAezDiWvQWqltJ3Lv7EDsMx4SCAcGk7SqZdYUbCsiW5Xk" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-sm">
+                                <span class="material-symbols-outlined text-primary text-xl" data-icon="play_arrow"
+                                    data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-on-surface">Podcast Intro: The Tech Edge</h4>
+                            <p class="text-on-surface-variant text-sm flex items-center gap-2">
+                                <span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                Yesterday • Narrator: Sophia
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="flex flex-col gap-4 group cursor-pointer">
+                        <div class="aspect-video rounded-3xl overflow-hidden bg-surface-container-highest relative">
+                            <img alt="Aesthetic keyboard"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="minimalist mechanical keyboard with custom keycaps in a clean white workspace setup with soft morning sunlight"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvgI1Kl_tEwsK_fXfEWs1cIrD6Bfx2c2YJaFK4hLjkvF3QSZMOaCK86cpsMEyU8DrvCOIlY8EQPW41g6ARN0grcxcq3l799IuUOukPHie7F-DT0J0IYo65kZ9xWO_NoODHdXtKIPQ3pMweWne9eBkRRxQdxKR830zDEBiMvQo35mNgSMkNeg3aqyojLlbeeNgD2OTFoFEudDEp9OBYb5ZOf16AbeRlVY16-gGS9kVYWVpPXEIzDRO-43w-f9Si2XlffqOIfcAub_w" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-sm">
+                                <span class="material-symbols-outlined text-primary text-xl" data-icon="play_arrow"
+                                    data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-on-surface">Whitepaper Audiobook Ch. 4</h4>
+                            <p class="text-on-surface-variant text-sm flex items-center gap-2">
+                                <span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                3 days ago • Narrator: Marcus
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Quick Start Card -->
+            <section
+                class="bg-surface-container-lowest p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-8 border border-outline-variant/10">
+                <div class="max-w-md">
+                    <h3 class="text-3xl font-bold text-on-surface tracking-tight mb-4">Start crafting your next sonic
+                        masterpiece</h3>
+                    <p class="text-on-surface-variant leading-relaxed">Whether it's a voiceover for a documentary or a
+                        unique brand voice, our artisan engine is ready to refine your text into high-fidelity speech.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 w-full md:w-auto">
+                    <button
+                        class="bg-surface-container px-6 py-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-surface-container-high transition-colors active:scale-95 group">
+                        <span
+                            class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform"
+                            data-icon="text_snippet">text_snippet</span>
+                        <span class="text-sm font-bold">From Script</span>
+                    </button>
+                    <button
+                        class="bg-surface-container px-6 py-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-surface-container-high transition-colors active:scale-95 group">
+                        <span
+                            class="material-symbols-outlined text-secondary text-3xl group-hover:scale-110 transition-transform"
+                            data-icon="mic">mic</span>
+                        <span class="text-sm font-bold">Voice Clone</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+        <!-- Spacer for mobile bottom nav -->
+        <div class="h-24 md:hidden"></div>
+    </main>
+    <!-- BottomNavBar (Execution from JSON) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 md:hidden bg-white/70 backdrop-blur-xl border-t border-[#f2f4f6] shadow-[0_-4px_40px_-10px_rgba(25,28,30,0.06)] rounded-t-3xl">
+        <a class="flex flex-col items-center justify-center bg-[#3525cd] text-white rounded-2xl p-3 scale-95 duration-200 ease-out"
+            href="#">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#191c1e]/50 p-3 active:bg-indigo-50 duration-200"
+            href="#">
+            <span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Work</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#191c1e]/50 p-3 active:bg-indigo-50 duration-200"
+            href="#">
+            <span class="material-symbols-outlined" data-icon="graphic_eq">graphic_eq</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Tune</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#191c1e]/50 p-3 active:bg-indigo-50 duration-200"
+            href="#">
+            <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Files</span>
+        </a>
+    </nav>
+</body>
+
+</html>

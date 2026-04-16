@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Sonic Editorial - Script &amp; Enhancement Studio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#dad7ff",
+                        "inverse-primary": "#c3c0ff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#006f66",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#7e3000",
+                        "tertiary-container": "#a44100",
+                        "on-tertiary-fixed": "#351000",
+                        "on-surface-variant": "#464555",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary-container": "#86f2e4",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#0f0069",
+                        "primary-fixed": "#e2dfff",
+                        "on-error-container": "#93000a",
+                        "secondary": "#006a61",
+                        "on-secondary-fixed": "#00201d",
+                        "secondary-fixed": "#89f5e7",
+                        "on-tertiary-container": "#ffd2be",
+                        "surface": "#f7f9fb",
+                        "outline": "#777587",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#4d44e3",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#3525cd",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "outline-variant": "#c7c4d8",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "surface-container-low": "#f2f4f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .editorial-flow {
+            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+    <div class="flex h-screen overflow-hidden">
+        <!-- SideNavBar (Predicted Component) -->
+        <aside
+            class="hidden md:flex flex-col h-screen p-4 space-y-6 bg-[#f2f4f6] dark:bg-slate-900 w-64 shrink-0 transition-all">
+            <div class="flex items-center gap-3 px-2 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-sm" data-icon="mic_external_on">mic_external_on</span>
+                </div>
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest font-inter text-on-surface">Project Alpha
+                    </h2>
+                    <p class="text-[10px] text-on-surface-variant font-medium">Creative Workspace</p>
+                </div>
+            </div>
+            <nav class="flex-1 space-y-2">
+                <div class="space-y-1">
+                    <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-outline mb-2">Main</p>
+                    <a class="flex items-center gap-3 px-3 py-2 bg-white dark:bg-slate-800 text-[#3525cd] dark:text-indigo-300 rounded-lg shadow-sm font-medium transition-all scale-95"
+                        href="#">
+                        <span class="material-symbols-outlined text-[20px]"
+                            data-icon="mic_external_on">mic_external_on</span>
+                        <span class="text-sm">Studio</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform hover:translate-x-1 duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined text-[20px]"
+                            data-icon="model_training">model_training</span>
+                        <span class="text-sm">Training</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform hover:translate-x-1 duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+                        <span class="text-sm">Tuning</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="pt-6 border-t border-outline-variant/20 space-y-2">
+                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform hover:translate-x-1 duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+                    <span class="text-sm font-medium">Help</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform hover:translate-x-1 duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="archive">archive</span>
+                    <span class="text-sm font-medium">Archive</span>
+                </a>
+            </div>
+            <button
+                class="w-full mt-4 bg-primary text-white py-3 rounded-xl font-bold text-sm shadow-sm active:opacity-80 transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Workspace
+            </button>
+        </aside>
+        <!-- Main Workspace Area -->
+        <main class="flex-1 flex flex-col h-screen bg-surface">
+            <!-- TopNavBar (Predicted Component) -->
+            <header
+                class="flex justify-between items-center w-full px-8 h-16 bg-[#f7f9fb] dark:bg-slate-950 no-border bg-[#f2f4f6] dark:bg-slate-900 shrink-0">
+                <div class="flex items-center gap-8">
+                    <span class="text-xl font-black tracking-tighter text-[#3525cd] dark:text-indigo-400">The Sonic
+                        Editorial</span>
+                    <nav class="flex items-center gap-6">
+                        <a class="text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-[#3525cd] dark:hover:text-indigo-300 transition-colors"
+                            href="#">Dashboard</a>
+                        <a class="text-[#3525cd] dark:text-indigo-400 border-b-2 border-[#3525cd] pb-1 text-sm font-medium"
+                            href="#">Assets</a>
+                        <a class="text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-[#3525cd] dark:hover:text-indigo-300 transition-colors"
+                            href="#">Team</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg font-bold text-sm scale-98 active:opacity-80 transition-all">
+                        Generate Speech
+                    </button>
+                    <div class="flex items-center gap-2 text-on-surface-variant">
+                        <span
+                            class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full cursor-pointer transition-colors"
+                            data-icon="notifications">notifications</span>
+                        <span
+                            class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full cursor-pointer transition-colors"
+                            data-icon="settings">settings</span>
+                        <img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant ml-2"
+                            data-alt="Close up portrait of a young creative professional man in a sunlit modern studio environment"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUGw76QObLkj9ECXNnARPDGE4st-dsgAs3FkA9Si8jvaCJ_vtTqydV5DCEoLd0inefZ4CRiGwtNZupqe4GmqkahOhTbSCGrr__BKp5kmQ3szDiQjpLuid2wMgJkMeogcZLnZTKTP6WJZqNHk3o-66b_zA1u3COk2MX3XrbL5r4Fvgos94D2HzxcYcJpU5eUTKDOFjrhLqIyoR1ebQ4MTBCHb_thPYVhP1f8afGr9cGwG2E0iFud9g4qeHfQBlb1KJ6RN32SXTeEx0" />
+                    </div>
+                </div>
+            </header>
+            <div class="flex-1 flex overflow-hidden">
+                <!-- Content Canvas -->
+                <div class="flex-1 overflow-y-auto px-12 py-10">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="flex justify-between items-end mb-12">
+                            <div>
+                                <h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface mb-2">
+                                    Enhancement Studio</h1>
+                                <p class="text-on-surface-variant max-w-lg">Refine your script for optimal acoustic
+                                    performance. AI analyzes tone, cadence, and breath markers for your voice model.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <button
+                                    class="flex items-center gap-2 px-4 py-2 rounded-xl text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-colors">
+                                    <span class="material-symbols-outlined text-lg"
+                                        data-icon="upload_file">upload_file</span>
+                                    Import Script
+                                </button>
+                                <button
+                                    class="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm shadow-lg shadow-primary/20 scale-98 active:scale-95 transition-all">
+                                    <span class="material-symbols-outlined" data-icon="auto_awesome"
+                                        style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                                    Enhance with AI
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Editor Playground -->
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl blur opacity-30 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div
+                                class="relative bg-surface-container-lowest rounded-[24px] p-10 min-h-[500px] shadow-sm">
+                                <div class="editorial-flow">
+                                    <div class="flex items-start gap-4 mb-8 pb-6 border-b border-surface-container">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant shrink-0">
+                                            <span class="material-symbols-outlined text-sm"
+                                                data-icon="stylus">stylus</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <span
+                                                    class="text-xs font-bold uppercase tracking-widest text-secondary">Original
+                                                    Draft</span>
+                                                <span class="text-[10px] text-outline">• Just now</span>
+                                            </div>
+                                            <p class="text-lg leading-relaxed text-on-surface-variant">The future of
+                                                sound isn't just about high-fidelity audio. It's about how we feel when
+                                                we hear a voice that sounds exactly like a person we know.</p>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-8">
+                                        <div class="flex items-start gap-4">
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
+                                                <span class="material-symbols-outlined text-sm"
+                                                    data-icon="auto_awesome">auto_awesome</span>
+                                            </div>
+                                            <div class="flex-1 space-y-4">
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="text-xs font-bold uppercase tracking-widest text-primary">Optimized
+                                                        Script</span>
+                                                    <span
+                                                        class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold tracking-wide uppercase">AI
+                                                        Suggested</span>
+                                                </div>
+                                                <div class="text-xl leading-relaxed font-medium">
+                                                    The future of sound <span
+                                                        class="bg-secondary-container/30 px-1 rounded cursor-help group/tip relative">isn't
+                                                        just about</span>
+                                                    <span
+                                                        class="hidden group-hover/tip:block absolute bottom-full left-0 mb-2 w-48 p-2 glass-card rounded-lg text-xs font-normal shadow-xl border border-outline-variant/20 z-50">
+                                                        Consider: "transcends" for more authoritative tone.
+                                                    </span>
+                                                    high-fidelity audio.
+                                                    <span
+                                                        class="inline-flex items-center px-2 py-0.5 mx-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold tracking-wide align-middle">PAUSE
+                                                        0.5s</span>
+                                                    It’s about the <span
+                                                        class="text-primary underline decoration-2 decoration-primary/30 underline-offset-4">emotional
+                                                        resonance</span>
+                                                    we experience when a voice mirrors the warmth of a familiar
+                                                    companion.
+                                                </div>
+                                                <div class="flex gap-4 pt-4">
+                                                    <div
+                                                        class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium">
+                                                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                                        Tone: Professional &amp; Warm
+                                                    </div>
+                                                    <div
+                                                        class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium">
+                                                        <span class="material-symbols-outlined text-sm"
+                                                            data-icon="speed">speed</span>
+                                                        145 WPM
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Interactive Suggestion Card -->
+                                        <div
+                                            class="ml-14 glass-card border border-primary/20 rounded-2xl p-4 flex gap-4 items-center">
+                                            <div class="flex-1">
+                                                <p class="text-xs font-bold text-primary uppercase mb-1">Sentence
+                                                    Enhancement</p>
+                                                <p class="text-sm text-on-surface-variant">"It's about how we feel" →
+                                                    "It’s about the emotional resonance we experience"</p>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button
+                                                    class="p-2 hover:bg-red-50 text-error rounded-lg transition-colors">
+                                                    <span class="material-symbols-outlined"
+                                                        data-icon="close">close</span>
+                                                </button>
+                                                <button
+                                                    class="p-2 hover:bg-green-50 text-secondary rounded-lg transition-colors">
+                                                    <span class="material-symbols-outlined"
+                                                        data-icon="check">check</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Insertion Beam -->
+                                <div class="mt-8 flex items-center gap-4 text-outline-variant">
+                                    <div class="h-[1px] flex-1 bg-current opacity-20"></div>
+                                    <button
+                                        class="flex items-center gap-2 px-4 py-1.5 rounded-full border border-current hover:text-primary hover:border-primary transition-all text-xs font-bold uppercase tracking-widest">
+                                        <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                                        Continue Writing
+                                    </button>
+                                    <div class="h-[1px] flex-1 bg-current opacity-20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Sidebar Analysis -->
+                <aside
+                    class="w-80 bg-surface-container-low border-l border-outline-variant/10 p-6 overflow-y-auto space-y-8">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Script Analysis
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-surface-container-lowest rounded-2xl shadow-sm">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-semibold text-on-surface-variant">Clarity Score</span>
+                                    <span class="text-xs font-bold text-primary">94%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full w-[94%]"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-surface-container-lowest rounded-2xl shadow-sm">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-semibold text-on-surface-variant">Engagement</span>
+                                    <span class="text-xs font-bold text-secondary">82%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                                    <div class="h-full bg-secondary rounded-full w-[82%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-4">Sentiment Map</h3>
+                        <div class="p-4 bg-surface-container-lowest rounded-2xl shadow-sm space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-tertiary"
+                                    data-icon="sentiment_satisfied">sentiment_satisfied</span>
+                                <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden flex">
+                                    <div class="h-full bg-tertiary-container w-[65%]"></div>
+                                    <div class="h-full bg-secondary w-[25%]"></div>
+                                    <div class="h-full bg-outline-variant w-[10%]"></div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-between text-[10px] font-bold uppercase tracking-tighter text-outline">
+                                <span>Inspiring (65%)</span>
+                                <span>Steady (25%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-4">Voice Selection
+                        </h3>
+                        <div class="space-y-3">
+                            <div
+                                class="flex items-center gap-3 p-3 bg-primary-fixed rounded-xl border border-primary/10">
+                                <img alt="Voice" class="w-10 h-10 rounded-full"
+                                    data-alt="Portrait of a friendly woman with a warm smile, professional lighting, natural skin textures"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_YoCubTfjMXxJc7F_D8qmQQUIL-6pl0OMWI4fMYzkk46TZaN4QmHch_iiJIPpz3oQmv_Ij6uBr11tGXT5k1vbNVlv9kNv9Cdprh3wBf0rTw5ZA-hhgsmfHRYTLmXQyrBlJFwHxW4cw5_UiKAkW98EkUXX99PnGilr7nndUVhn34U0MkORoL4YzE1dlU-CyBkF3VwBPAcMOsBIv6P2WN2BGSxEser-FfpasCBNlVvKwJnwguVImAddfg_vazJ2xwRDogQ0nmtEtiE" />
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-on-primary-fixed">Evelyn Rose</p>
+                                    <p
+                                        class="text-[10px] text-on-primary-fixed-variant uppercase font-bold tracking-widest">
+                                        Narrative Warmth</p>
+                                </div>
+                                <span class="material-symbols-outlined text-on-primary-fixed-variant"
+                                    data-icon="check_circle"
+                                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl hover:bg-surface-container-high transition-colors cursor-pointer">
+                                <img alt="Voice" class="w-10 h-10 rounded-full grayscale"
+                                    data-alt="Portrait of a middle aged man with glasses, looking thoughtful, studio background with soft bokeh"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCVI1FP2CItXWTR7hI67V8cN0jwVXJ4_XCqiq2AVd2uhzrpEWPDSr3lStyTxMMjMZIFpn5rK10lj-C6eHLkbLARw4NE1MT16wEmO9p4xBk_2Wqn744p4HcVmcEnKO2yzDOc8QuwIbsmw2N-uZvosCHu3VZZqk5DIEOtgbdbwkOMo9vo33u8EU_JF5wtLUQdxPx3l05-TxSswUDU2nkMsXB5k-n6dGhkwzHfNUDprxLTpss9vNzhhslrwJdXVkAaOocotu8IcumA0" />
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-on-surface">Jameson Blake</p>
+                                    <p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">
+                                        Deep Authoritative</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <div
+                            class="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-2xl p-5 border border-outline-variant/10 relative overflow-hidden">
+                            <div class="relative z-10">
+                                <p class="text-xs font-bold text-on-surface-variant uppercase mb-2">Editor Tip</p>
+                                <p class="text-sm italic text-on-surface-variant">"Inserting a 0.5s pause after your key
+                                    premise increases listener retention by 22%."</p>
+                            </div>
+                            <span
+                                class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl text-surface-container-highest opacity-20"
+                                data-icon="lightbulb">lightbulb</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

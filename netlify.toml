@@ -1,0 +1,17 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# IMPORTANT: Replace YOUR_DEPLOYED_BACKEND_URL with your actual backend's URL 
+# when you deploy the FastAPI backend (e.g. on Render or Heroku)
+[[redirects]]
+  from = "/api/*"
+  to = "https://YOUR_DEPLOYED_BACKEND_URL/api/:splat"
+  status = 200
+  force = true
+
+# Fallback for Single Page App (SPA) routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
