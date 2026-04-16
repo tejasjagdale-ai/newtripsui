@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npm install && npm run build"
 
 # IMPORTANT: Replace YOUR_DEPLOYED_BACKEND_URL with your actual backend's URL 
 # when you deploy the FastAPI backend (e.g. on Render or Heroku)
