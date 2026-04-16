@@ -44,7 +44,7 @@ export async function uploadDocument(file) {
     return res.json();
   } catch (err) {
     if (err.name === 'TypeError' || err.message?.includes('fetch')) {
-      showToast('Cannot connect to server. Is the backend running on port 8000?', 'error');
+      showToast('Cannot connect to server. Is the backend running?', 'error');
     }
     throw err;
   }
@@ -75,7 +75,7 @@ export async function enhanceScript(text, autoPacing = true, toneMarkers = true)
     return res.json();
   } catch (err) {
     if (err.name === 'TypeError' || err.message?.includes('fetch')) {
-      showToast('Cannot connect to server. Is the backend running on port 8000?', 'error');
+      showToast('Cannot connect to server. Is the backend running?', 'error');
     }
     throw err;
   }
@@ -99,7 +99,7 @@ export async function generateTTS(text, voice) {
     return res.blob();
   } catch (err) {
     if (err.name === 'TypeError' || err.message?.includes('fetch')) {
-      showToast('Cannot connect to server. Is the backend running on port 8000?', 'error');
+      showToast('Cannot connect to server. Is the backend running?', 'error');
     }
     throw err;
   }
