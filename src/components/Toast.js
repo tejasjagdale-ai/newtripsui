@@ -19,10 +19,17 @@ export function showToast(message, type = 'info') {
   if (type === 'error') iconName = 'error';
 
   toast.className = `toast ${typeClass}`;
-  toast.innerHTML = `
-    <span class="material-symbols-outlined toast__icon filled" style="font-size: 20px;">${iconName}</span>
-    <span>${message}</span>
-  `;
+  
+  const iconSpan = document.createElement('span');
+  iconSpan.className = 'material-symbols-outlined toast__icon filled';
+  iconSpan.style.fontSize = '20px';
+  iconSpan.textContent = iconName;
+  
+  const messageSpan = document.createElement('span');
+  messageSpan.textContent = message;
+  
+  toast.appendChild(iconSpan);
+  toast.appendChild(messageSpan);
 
   container.appendChild(toast);
 

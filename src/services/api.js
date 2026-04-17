@@ -110,7 +110,14 @@ export async function generateTTS(text, voice) {
  * @returns {Promise<{status: string, version: string, api_key_configured: boolean}>}
  */
 export async function healthCheck() {
-  const response = await fetch(`${API_BASE}/health`);
-  const res = await handleResponse(response);
-  return res.json();
+  try {
+    const response = await fetch(`${API_BASE}/health`);
+    const res = await handleResponse(response);
+    return res.json();
+  } catch (err) {
+    if (err.name === 'TypeError' || err.message?.includes('fetch')) {
+      showToast('Cannot connect to backend health check. Is the backend running?', 'error');
+    }
+    throw err;
+  }
 }

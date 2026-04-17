@@ -41,7 +41,7 @@ export async function renderStudioPage(container) {
   let selectedVoice = store.get('selectedVoice') || 'Puck';
   let showAllVoices = false;
   let currentBlobUrl = store.get('audioBlobUrl') || null;
-  let isGenerating = false;
+  let isGenerating = store.get('isGenerating') || false;
 
   container.innerHTML = `
     <div class="page-content page-enter" style="height: 100%; padding-bottom: 1rem;">
@@ -266,6 +266,7 @@ export async function renderStudioPage(container) {
       }
 
       isGenerating = true;
+      store.set('isGenerating', true);
       showLoadingModal('Generating Audio', `Synthesizing speech with voice "${voice}"...`);
 
       try {
@@ -290,6 +291,7 @@ export async function renderStudioPage(container) {
         showToast(`Generation failed: ${err.message}`, 'error');
       } finally {
         isGenerating = false;
+        store.set('isGenerating', false);
       }
     });
   }

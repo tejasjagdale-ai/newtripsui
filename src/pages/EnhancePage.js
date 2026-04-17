@@ -137,23 +137,30 @@ export async function renderEnhancePage(container) {
   const togglePacing = container.querySelector('#toggle-pacing');
   const toggleTone = container.querySelector('#toggle-tone');
 
-  let autoPacing = true;
-  let toneMarkers = true;
+  let autoPacing = store.get('autoPacing') ?? true;
+  let toneMarkers = store.get('toneMarkers') ?? true;
 
   // ── Toggle Logic ──
-  function setupToggle(el, callback) {
+  function setupToggle(el, storeKey, initialValue, callback) {
     if (!el) return;
+    if (!initialValue) {
+      el.classList.remove('on');
+    } else {
+      el.classList.add('on');
+    }
     el.addEventListener('click', () => {
       el.classList.toggle('on');
-      callback(el.classList.contains('on'));
+      const isOn = el.classList.contains('on');
+      store.set(storeKey, isOn);
+      callback(isOn);
     });
   }
-  setupToggle(togglePacing, (val) => { autoPacing = val; });
-  setupToggle(toggleTone, (val) => { toneMarkers = val; });
+  setupToggle(togglePacing, 'autoPacing', autoPacing, (val) => { autoPacing = val; });
+  setupToggle(toggleTone, 'toneMarkers', toneMarkers, (val) => { toneMarkers = val; });
 
   // ── Enable/disable enhance btn ──
   function updateEnhanceBtn() {
-    const text = store.get('rawScript')?.trim() || '';
+    const text = (textarea ? textarea.value : store.get('rawScript') || '').trim();
     if (enhanceBtn) {
       enhanceBtn.disabled = !text;
       enhanceBtn.style.opacity = text ? 1 : 0.5;
@@ -209,28 +216,49 @@ export async function renderEnhancePage(container) {
   }
 
   // ── Textarea → save to state ──
+  let textareaTimeout;
   if (textarea) {
     textarea.addEventListener('input', () => {
-      store.set('rawScript', textarea.value);
       updateEnhanceBtn();
+      clearTimeout(textareaTimeout);
+      textareaTimeout = setTimeout(() => {
+        store.set('rawScript', textarea.value);
+      }, 300);
     });
   }
 
   // ── Enhanced text editing — save changes to state ──
+  let enhancedTextareaTimeout;
   if (enhancedTextarea) {
     enhancedTextarea.addEventListener('input', () => {
-      store.set('enhancedScript', enhancedTextarea.value);
+      clearTimeout(enhancedTextareaTimeout);
+      enhancedTextareaTimeout = setTimeout(() => {
+        store.set('enhancedScript', enhancedTextarea.value);
+      }, 300);
     });
   }
 
   // ── Enhance Logic ──
+  let isEnhancing = false;
   async function doEnhance() {
+    if (isEnhancing) return;
+    
+    // Force sync the DOM value to state immediately before enhancing
+    if (enhancedTextarea && enhancedTextarea.value.trim()) {
+      // Re-enhancing: Use the edited enhanced script as the new baseline
+      store.set('rawScript', enhancedTextarea.value);
+    } else if (textarea) {
+      // Normal enhance: make sure we have latest user input even if they just pasted
+      store.set('rawScript', textarea.value);
+    }
+
     const text = store.get('rawScript')?.trim();
     if (!text) {
       showToast('No script text to enhance. Please write or upload text first.', 'error');
       return;
     }
 
+    isEnhancing = true;
     showLoadingModal('Enhancing Script', 'Gemini AI is optimizing pacing, tone markers, and cadence...');
 
     try {
@@ -255,6 +283,8 @@ export async function renderEnhancePage(container) {
       if (!err.message?.includes('unexpected')) {
         showToast(`Enhancement failed: ${err.message}`, 'error');
       }
+    } finally {
+      isEnhancing = false;
     }
   }
 
@@ -269,6 +299,12 @@ export async function renderEnhancePage(container) {
       navigate('enhance');
     });
   }
+
+  // ── Cleanup on unmount ──
+  return () => {
+    clearTimeout(textareaTimeout);
+    clearTimeout(enhancedTextareaTimeout);
+  };
 }
 
 function renderInputArea(rawScript, filename) {
@@ -280,7 +316,7 @@ function renderInputArea(rawScript, filename) {
           ${filename ? `
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-light);">
               <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary);">description</span>
-              <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted);">${filename}</span>
+              <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted);">${escapeHtml(filename)}</span>
             </div>
           ` : ''}
           <textarea class="editor-textarea" id="script-textarea" placeholder="Paste your script text here, or use Import to upload a file...">${escapeHtml(rawScript)}</textarea>
